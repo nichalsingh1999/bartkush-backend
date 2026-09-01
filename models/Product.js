@@ -1,3 +1,4 @@
+// server/models/Product.js
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
@@ -6,10 +7,24 @@ const productSchema = new mongoose.Schema({
   category: { 
     type: String, 
     required: true,
-    // Removed strict lowercase enum validation so 'ALBUMS', 'T-SHIRTS', and 'CAPS' are accepted freely
   },
   description: { type: String },
-  image: { type: String }
+  image: { type: String },
+  albumDetails: {
+    tracklist: [
+      {
+        title: String,
+        duration: String,
+        artist: String,
+        views: String,
+        audioFile: String,
+        youtubeLink: String // ✅ Added this field for individual track YouTube links
+      }
+    ],
+    youtubeLink: String,
+    releaseYear: String,
+    label: String
+  }
 });
 
 module.exports = mongoose.model('Product', productSchema);
