@@ -10,6 +10,11 @@ const productSchema = new mongoose.Schema({
   },
   description: { type: String },
   image: { type: String },
+  // T-Shirt specific fields
+  isLimitedEdition: { type: Boolean, default: false },
+  sizes: [String],
+  color: { type: String },
+  // Album specific fields
   albumDetails: {
     tracklist: [
       {
@@ -18,7 +23,7 @@ const productSchema = new mongoose.Schema({
         artist: String,
         views: String,
         audioFile: String,
-        youtubeLink: String // ✅ Added this field for individual track YouTube links
+        youtubeLink: String
       }
     ],
     youtubeLink: String,

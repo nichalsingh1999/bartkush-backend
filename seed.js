@@ -90,20 +90,56 @@ const productsData = [
     }
   },
   
-  // T-SHIRTS
+  // T-SHIRTS - Limited Edition with Sizes and Colors (Rs 2500 each)
   {
-    name: "Masterclass Heavyweight Vintage Tee",
-    price: 45.00,
+    name: "Limited Edition Black Tee",
+    price: 2500,
     category: "T-SHIRTS",
-    description: "Premium garment-dyed cotton streetwear tee.",
-    image: "https://via.placeholder.com/400x400/000/fff?text=T-Shirt"
+    description: "Premium black cotton streetwear tee with vintage wash finish. Features the iconic BartKush logo embroidered on the chest. Made from 100% organic cotton for ultimate comfort and durability.",
+    image: "/src/assets/BLACK.jpeg",
+    isLimitedEdition: true,
+    sizes: ["Small", "Medium", "Large"],
+    color: "Black"
   },
   {
-    name: "Limited Edition Hoodie",
-    price: 55.00,
+    name: "Limited Edition Maroon Tee",
+    price: 2500,
     category: "T-SHIRTS",
-    description: "Premium quality hoodie with BartKush logo.",
-    image: "https://via.placeholder.com/400x400/000/fff?text=Hoodie"
+    description: "Premium maroon color with gold foil print. The signature piece of the collection featuring metallic gold detailing. A bold statement piece for the elite culture.",
+    image: "/src/assets/MORON.jpeg",
+    isLimitedEdition: true,
+    sizes: ["Small", "Medium", "Large"],
+    color: "Maroon"
+  },
+  {
+    name: "Limited Edition Grey Tee",
+    price: 2500,
+    category: "T-SHIRTS",
+    description: "Classic grey fit with embroidered BartKush logo. A timeless essential for everyday wear. Soft-touch fabric with reinforced stitching for long-lasting quality.",
+    image: "/src/assets/GREY.jpeg",
+    isLimitedEdition: true,
+    sizes: ["Small", "Medium", "Large"],
+    color: "Grey"
+  },
+  {
+    name: "Limited Edition Cream Tee",
+    price: 2500,
+    category: "T-SHIRTS",
+    description: "Premium quality cream tee with BartKush logo. Soft-touch fabric with a clean, elegant finish. Perfect for the masterclass lifestyle.",
+    image: "/src/assets/CREAM.jpeg",
+    isLimitedEdition: true,
+    sizes: ["Small", "Medium", "Large"],
+    color: "Cream"
+  },
+  {
+    name: "Limited Edition White Tee",
+    price: 2500,
+    category: "T-SHIRTS",
+    description: "Essential white tee with minimal branding. The perfect foundation for any outfit. Made from premium cotton with a clean, crisp finish.",
+    image: "/src/assets/WHITE.jpeg",
+    isLimitedEdition: true,
+    sizes: ["Small", "Medium", "Large"],
+    color: "White"
   },
   
   // CAPS
@@ -163,8 +199,10 @@ mongoose.connect(process.env.MONGO_URI)
     const caps = productsData.filter(p => p.category === "CAPS");
     const jewelries = productsData.filter(p => p.category === "JEWELRIES");
     
-    console.log(`\n👕 ${tShirts.length} T-Shirts added`);
-    tShirts.forEach(p => console.log(`  - ${p.name} ($${p.price})`));
+    console.log(`\n👕 ${tShirts.length} Limited Edition T-Shirts added (Rs 2500 each):`);
+    tShirts.forEach(p => {
+      console.log(`  - ${p.name} (Rs ${p.price}) - ${p.color} - Sizes: ${p.sizes.join(', ')}`);
+    });
     
     console.log(`\n🧢 ${caps.length} Caps added`);
     caps.forEach(p => console.log(`  - ${p.name} ($${p.price})`));
