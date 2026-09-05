@@ -142,36 +142,36 @@ const productsData = [
     color: "White"
   },
   
-  // CAPS
+  // CAPS - Updated with correct prices
   {
     name: "BartKush Signature Embroidered Cap",
-    price: 30.00,
+    price: 3500,
     category: "CAPS",
-    description: "Structured premium headwear with high-density embroidery.",
-    image: "https://via.placeholder.com/400x400/000/fff?text=Cap"
+    description: "Structured premium headwear with high-density embroidery. Classic black cap with BartKush signature logo. Made from premium quality materials for lasting durability.",
+    image: "/src/assets/Blackcap.jpeg",
+    isLimitedEdition: false,
+    sizes: ["One Size"],
+    color: "Black"
   },
   {
-    name: "Limited Edition Snapback",
-    price: 32.00,
+    name: "Limited Edition Blue Cap",
+    price: 2500,
     category: "CAPS",
-    description: "Classic snapback with BartKush logo.",
-    image: "https://via.placeholder.com/400x400/000/fff?text=Snapback"
-  },
-  
-  // JEWELRIES
-  {
-    name: "BartKush Gold Masterclass Pendant",
-    price: 65.00,
-    category: "JEWELRIES",
-    description: "Custom engraved signature jewelry piece with elite finish.",
-    image: "https://via.placeholder.com/400x400/000/fff?text=Gold+Pendant"
+    description: "Premium blue cap with embroidered BartKush logo. Made from high-quality cotton with adjustable strap for perfect fit. A must-have for the masterclass collection.",
+    image: "/src/assets/bluecap.jpeg",
+    isLimitedEdition: true,
+    sizes: ["One Size"],
+    color: "Blue"
   },
   {
-    name: "Silver BartKush Chain",
-    price: 45.00,
-    category: "JEWELRIES",
-    description: "Premium sterling silver chain with BartKush emblem.",
-    image: "https://via.placeholder.com/400x400/000/fff?text=Silver+Chain"
+    name: "Limited Edition White Cap",
+    price: 2500,
+    category: "CAPS",
+    description: "Classic white cap with minimal branding. Perfect for everyday wear with a clean, crisp finish. Features the iconic BartKush logo in subtle embroidery.",
+    image: "/src/assets/whitecap.jpeg",
+    isLimitedEdition: true,
+    sizes: ["One Size"],
+    color: "White"
   }
 ];
 
@@ -197,18 +197,18 @@ mongoose.connect(process.env.MONGO_URI)
     
     const tShirts = productsData.filter(p => p.category === "T-SHIRTS");
     const caps = productsData.filter(p => p.category === "CAPS");
-    const jewelries = productsData.filter(p => p.category === "JEWELRIES");
     
     console.log(`\n👕 ${tShirts.length} Limited Edition T-Shirts added (Rs 2500 each):`);
     tShirts.forEach(p => {
       console.log(`  - ${p.name} (Rs ${p.price}) - ${p.color} - Sizes: ${p.sizes.join(', ')}`);
     });
     
-    console.log(`\n🧢 ${caps.length} Caps added`);
-    caps.forEach(p => console.log(`  - ${p.name} ($${p.price})`));
+    console.log(`\n🧢 ${caps.length} Caps added:`);
+    caps.forEach(p => {
+      console.log(`  - ${p.name} (Rs ${p.price}) - ${p.color} - ${p.sizes.join(', ')}`);
+    });
     
-    console.log(`\n💎 ${jewelries.length} Jewelries added`);
-    jewelries.forEach(p => console.log(`  - ${p.name} ($${p.price})`));
+    console.log("\n💎 Jewelries section is set to 'Coming Soon' - no products seeded");
     
     console.log("\n✅ All products added successfully!");
     console.log("📊 Total products:", inserted.length);
