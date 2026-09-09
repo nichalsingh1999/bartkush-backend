@@ -1,30 +1,51 @@
+// server/server.js
 require('dotenv').config({ path: '../.env' });
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-// 1. Initialize Express FIRST before using 'app'
+// Initialize Express
 const app = express();
 
 // Middleware
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
-// Import your product routes (adjust path if your file structure is different)
-const productRoutes = require('./routes/productRoutes'); 
+// Import routes
+const productRoutes = require('./routes/productRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 
-// 2. Now use 'app' safely
+// Use routes
 app.use('/api/products', productRoutes);
+app.use('/api/orders', orderRoutes);
 
-// Connect to MongoDB and start server
+// Health check route
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'Server is running', 
+    timestamp: new Date().toISOString() 
+  });
+});
+
+// MongoDB connection
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/bart-kush-store';
 
+if (!MONGO_URI) {
+  console.error('❌ MONGO_URI is not defined in .env file');
+  process.exit(1);
+}
+
 mongoose.connect(MONGO_URI)
   .then(() => {
-    console.log('Connected to MongoDB Atlas successfully');
+    console.log('✅ Connected to MongoDB Atlas successfully');
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+      console.log(`🚀 Server running on http://localhost:${PORT}`);
+      console.log(`📦 Products endpoint: http://localhost:${PORT}/api/products`);
+      console.log(`📦 Orders endpoint: http://localhost:${PORT}/api/orders`);
     });
   })
-  .catch(err => console.log('Database connection error:', err));
+  .catch((err) => {
+    console.error('❌ Database connection error:', err.message);
+    process.exit(1);
+  });

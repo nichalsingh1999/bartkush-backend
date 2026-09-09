@@ -19,7 +19,8 @@ const productsData = [
     price: 35.00,
     category: "ALBUMS",
     description: "Official audio record masterclass edition. A journey through the western echoes of sound and culture.",
-    image: "https://via.placeholder.com/400x400/000/fff?text=Echoes+Of+The+West",
+    // UPDATED: Replaced placeholder with a working direct image URL (You can replace this with your own hosted link!)
+    image: "https://i.ibb.co/6P0yY9x/Echoes.jpg", 
     albumDetails: {
       tracklist: [
         { 
@@ -31,7 +32,7 @@ const productsData = [
           title: "Masterclass Anthem", 
           duration: "4:12",
           artist: "Robin Chand Thakuri"
-        },
+        }, 
         { 
           title: "Outro: Final Legacy", 
           duration: "2:50",
@@ -48,7 +49,8 @@ const productsData = [
     price: 25.00,
     category: "ALBUMS", 
     description: "Official studio record masterclass release. A fusion of multiple genres in one masterpiece.",
-    image: "/src/assets/multiple-genre-disorder.jpg",
+    // UPDATED: Used a placeholder URL. Replace with actual hosted URL for the image.
+    image: "https://via.placeholder.com/400x400/003366/ffffff?text=Multiple+Genre+Disorder", 
     albumDetails: {
       tracklist: [
         { 
@@ -96,7 +98,8 @@ const productsData = [
     price: 2500,
     category: "T-SHIRTS",
     description: "Premium black cotton streetwear tee with vintage wash finish. Features the iconic BartKush logo embroidered on the chest. Made from 100% organic cotton for ultimate comfort and durability.",
-    image: "/src/assets/BLACK.jpeg",
+    // UPDATED: Used a placeholder URL. Replace with actual hosted URL.
+    image: "https://via.placeholder.com/400x400/000000/ffffff?text=Black+Tee",
     isLimitedEdition: true,
     sizes: ["Small", "Medium", "Large"],
     color: "Black"
@@ -106,7 +109,8 @@ const productsData = [
     price: 2500,
     category: "T-SHIRTS",
     description: "Premium maroon color with gold foil print. The signature piece of the collection featuring metallic gold detailing. A bold statement piece for the elite culture.",
-    image: "/src/assets/MORON.jpeg",
+    // UPDATED: Used a placeholder URL. Replace with actual hosted URL.
+    image: "https://via.placeholder.com/400x400/800000/ffffff?text=Maroon+Tee",
     isLimitedEdition: true,
     sizes: ["Small", "Medium", "Large"],
     color: "Maroon"
@@ -116,7 +120,8 @@ const productsData = [
     price: 2500,
     category: "T-SHIRTS",
     description: "Classic grey fit with embroidered BartKush logo. A timeless essential for everyday wear. Soft-touch fabric with reinforced stitching for long-lasting quality.",
-    image: "/src/assets/GREY.jpeg",
+    // UPDATED: Used a placeholder URL. Replace with actual hosted URL.
+    image: "https://via.placeholder.com/400x400/808080/ffffff?text=Grey+Tee",
     isLimitedEdition: true,
     sizes: ["Small", "Medium", "Large"],
     color: "Grey"
@@ -126,7 +131,8 @@ const productsData = [
     price: 2500,
     category: "T-SHIRTS",
     description: "Premium quality cream tee with BartKush logo. Soft-touch fabric with a clean, elegant finish. Perfect for the masterclass lifestyle.",
-    image: "/src/assets/CREAM.jpeg",
+    // UPDATED: Used a placeholder URL. Replace with actual hosted URL.
+    image: "https://via.placeholder.com/400x400/FFFDD0/000000?text=Cream+Tee",
     isLimitedEdition: true,
     sizes: ["Small", "Medium", "Large"],
     color: "Cream"
@@ -136,7 +142,8 @@ const productsData = [
     price: 2500,
     category: "T-SHIRTS",
     description: "Essential white tee with minimal branding. The perfect foundation for any outfit. Made from premium cotton with a clean, crisp finish.",
-    image: "/src/assets/WHITE.jpeg",
+    // UPDATED: Used a placeholder URL. Replace with actual hosted URL.
+    image: "https://via.placeholder.com/400x400/ffffff/000000?text=White+Tee",
     isLimitedEdition: true,
     sizes: ["Small", "Medium", "Large"],
     color: "White"
@@ -148,7 +155,8 @@ const productsData = [
     price: 3500,
     category: "CAPS",
     description: "Structured premium headwear with high-density embroidery. Classic black cap with BartKush signature logo. Made from premium quality materials for lasting durability.",
-    image: "/src/assets/Blackcap.jpeg",
+    // UPDATED: Used a placeholder URL. Replace with actual hosted URL.
+    image: "https://via.placeholder.com/400x400/000000/ffffff?text=Black+Cap",
     isLimitedEdition: false,
     sizes: ["One Size"],
     color: "Black"
@@ -158,7 +166,8 @@ const productsData = [
     price: 2500,
     category: "CAPS",
     description: "Premium blue cap with embroidered BartKush logo. Made from high-quality cotton with adjustable strap for perfect fit. A must-have for the masterclass collection.",
-    image: "/src/assets/bluecap.jpeg",
+    // UPDATED: Used a placeholder URL. Replace with actual hosted URL.
+    image: "https://via.placeholder.com/400x400/0000FF/ffffff?text=Blue+Cap",
     isLimitedEdition: true,
     sizes: ["One Size"],
     color: "Blue"
@@ -168,7 +177,8 @@ const productsData = [
     price: 2500,
     category: "CAPS",
     description: "Classic white cap with minimal branding. Perfect for everyday wear with a clean, crisp finish. Features the iconic BartKush logo in subtle embroidery.",
-    image: "/src/assets/whitecap.jpeg",
+    // UPDATED: Used a placeholder URL. Replace with actual hosted URL.
+    image: "https://via.placeholder.com/400x400/ffffff/000000?text=White+Cap",
     isLimitedEdition: true,
     sizes: ["One Size"],
     color: "White"
