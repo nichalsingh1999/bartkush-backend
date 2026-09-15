@@ -16,7 +16,7 @@ const productsData = [
   // ALBUMS - With specific details
   {
     name: "The Echoes Of The West",
-    price: 35.00,
+    price: 2000.00,
     category: "ALBUMS",
     description: "Official audio record masterclass edition. A journey through the western echoes of sound and culture.",
     // UPDATED: Replaced placeholder with a working direct image URL (You can replace this with your own hosted link!)
@@ -40,13 +40,13 @@ const productsData = [
         }
       ],
       youtubeLink: "https://www.youtube.com/watch?v=Ri3JuT-MquA",
-      releaseYear: "2024",
-      label: "BartKush Records"
+      releaseYear: "2026",
+      label: "bartkushmussicco."
     }
   },
   {
     name: "Multiple Genre Disorder, VOL1",
-    price: 25.00,
+    price: 1500.00,
     category: "ALBUMS", 
     description: "Official studio record masterclass release. A fusion of multiple genres in one masterpiece.",
     // UPDATED: Used a placeholder URL. Replace with actual hosted URL for the image.
