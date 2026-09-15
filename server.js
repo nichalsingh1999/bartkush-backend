@@ -1,5 +1,9 @@
 // server/server.js
-require('dotenv').config({ path: '../.env' });
+// ✅ Smart env loading: works locally AND on Render
+if (process.env.NODE_ENV !== 'production' && !process.env.RENDER) {
+  require('dotenv').config({ path: '../.env' });
+}
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -11,7 +15,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ Pre-Save Model (defined here to avoid creating extra files)
+// ✅ Pre-Save Model
 const preSaveSchema = new mongoose.Schema({
   albumId: { type: String, required: true },
   albumName: { type: String, required: true },
@@ -28,7 +32,7 @@ const orderRoutes = require('./routes/orderRoutes');
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 
-// ✅ PRE-SAVE ROUTE (New)
+// ✅ PRE-SAVE ROUTE
 app.post('/api/pre-save', async (req, res) => {
   try {
     const { albumId, albumName, customerEmail } = req.body;
@@ -37,13 +41,11 @@ app.post('/api/pre-save', async (req, res) => {
       return res.status(400).json({ success: false, message: 'Missing required fields' });
     }
 
-    // Check if this email already pre-saved this album
     const existing = await PreSave.findOne({ albumId, customerEmail });
     if (existing) {
       return res.status(200).json({ success: true, message: 'Already pre-saved' });
     }
 
-    // Save the pre-save to MongoDB
     const newPreSave = await PreSave.create({
       albumId,
       albumName,
@@ -63,7 +65,7 @@ app.post('/api/pre-save', async (req, res) => {
   }
 });
 
-// ✅ ROUTE TO VIEW ALL PRE-SAVES (For the artist to check later)
+// ✅ VIEW ALL PRE-SAVES
 app.get('/api/pre-saves', async (req, res) => {
   try {
     const preSaves = await PreSave.find().sort({ date: -1 });
@@ -74,7 +76,7 @@ app.get('/api/pre-saves', async (req, res) => {
   }
 });
 
-// Health check route
+// Health check
 app.get('/api/health', (req, res) => {
   res.json({ 
     status: 'Server is running', 
@@ -86,11 +88,6 @@ app.get('/api/health', (req, res) => {
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/bart-kush-store';
 
-if (!MONGO_URI) {
-  console.error('❌ MONGO_URI is not defined in .env file');
-  process.exit(1);
-}
-
 mongoose.connect(MONGO_URI)
   .then(() => {
     console.log('✅ Connected to MongoDB Atlas successfully');
@@ -100,6 +97,9 @@ mongoose.connect(MONGO_URI)
       console.log(`📦 Orders endpoint: http://localhost:${PORT}/api/orders`);
       console.log(`🔔 Pre-Save endpoint: http://localhost:${PORT}/api/pre-save`);
       console.log(`📋 View Pre-Saves: http://localhost:${PORT}/api/pre-saves`);
+      console.log(`📧 Email provider: Resend`);
+      console.log(`📧 Owner email: ${process.env.OWNER_EMAIL || 'NOT SET'}`);
+      console.log(`🔑 Resend key loaded: ${process.env.RESEND_API_KEY ? 'YES' : 'NO'}`);
     });
   })
   .catch((err) => {
